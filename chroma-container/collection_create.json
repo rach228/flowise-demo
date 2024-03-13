@@ -1,0 +1,10 @@
+import chromadb
+
+# Create a persistent Chroma client with the location of your Chroma DB.
+persistent_client = chromadb.PersistentClient(path="http://localhost:8000/api/v1/")
+
+# Create a collection called "test_collection".
+collection = persistent_client.create_collection("dfw_summit_collection")
+
+# Print a statement that the new collection exists.
+print(f"Collection name: {collection.name}")
