@@ -1,0 +1,77 @@
+kind: Route
+apiVersion: route.openshift.io/v1
+metadata:
+  name: flowise
+  namespace: flowise
+  uid: f4a7b09a-dedb-42c7-96fa-1230f230a2cc
+  resourceVersion: '454038'
+  creationTimestamp: '2024-03-11T05:35:47Z'
+  labels:
+    app: flowise
+    app.kubernetes.io/component: flowise
+    app.kubernetes.io/instance: flowise
+    app.kubernetes.io/name: flowise
+    app.kubernetes.io/part-of: test1-app
+    app.openshift.io/runtime-version: latest
+  annotations:
+    openshift.io/host.generated: 'true'
+  managedFields:
+    - manager: openshift-router
+      operation: Update
+      apiVersion: route.openshift.io/v1
+      time: '2024-03-11T05:35:47Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:status':
+          'f:ingress': {}
+      subresource: status
+    - manager: Mozilla
+      operation: Update
+      apiVersion: route.openshift.io/v1
+      time: '2024-03-11T09:23:41Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:metadata':
+          'f:labels':
+            .: {}
+            'f:app': {}
+            'f:app.kubernetes.io/component': {}
+            'f:app.kubernetes.io/instance': {}
+            'f:app.kubernetes.io/name': {}
+            'f:app.kubernetes.io/part-of': {}
+            'f:app.openshift.io/runtime-version': {}
+        'f:spec':
+          'f:port':
+            .: {}
+            'f:targetPort': {}
+          'f:tls':
+            .: {}
+            'f:insecureEdgeTerminationPolicy': {}
+            'f:termination': {}
+          'f:to':
+            'f:kind': {}
+            'f:name': {}
+            'f:weight': {}
+          'f:wildcardPolicy': {}
+spec:
+  host: flowise-flowise.apps.ky4n7bsb.eastus.aroapp.io
+  to:
+    kind: Service
+    name: flowise
+    weight: 100
+  port:
+    targetPort: 3000-tcp
+  tls:
+    termination: edge
+    insecureEdgeTerminationPolicy: Redirect
+  wildcardPolicy: None
+status:
+  ingress:
+    - host: flowise-flowise.apps.ky4n7bsb.eastus.aroapp.io
+      routerName: default
+      conditions:
+        - type: Admitted
+          status: 'True'
+          lastTransitionTime: '2024-03-11T05:35:47Z'
+      wildcardPolicy: None
+      routerCanonicalHostname: router-default.apps.ky4n7bsb.eastus.aroapp.io
