@@ -1,0 +1,67 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: flowise
+  namespace: flowise
+  uid: 6f2d4c91-5677-47e6-88ad-e523b0ad90cd
+  resourceVersion: '453821'
+  creationTimestamp: '2024-03-11T09:16:24Z'
+  labels:
+    app: flowise
+    app.kubernetes.io/component: flowise
+    app.kubernetes.io/instance: flowise
+    app.kubernetes.io/name: flowise
+    app.kubernetes.io/part-of: test1-app
+  annotations:
+    openshift.io/generated-by: OpenShiftWebConsole
+  managedFields:
+    - manager: Mozilla
+      operation: Update
+      apiVersion: v1
+      time: '2024-03-11T09:23:12Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:metadata':
+          'f:annotations':
+            .: {}
+            'f:openshift.io/generated-by': {}
+          'f:labels':
+            .: {}
+            'f:app': {}
+            'f:app.kubernetes.io/component': {}
+            'f:app.kubernetes.io/instance': {}
+            'f:app.kubernetes.io/name': {}
+            'f:app.kubernetes.io/part-of': {}
+        'f:spec':
+          'f:internalTrafficPolicy': {}
+          'f:ports':
+            .: {}
+            'k:{"port":3000,"protocol":"TCP"}':
+              .: {}
+              'f:name': {}
+              'f:port': {}
+              'f:protocol': {}
+              'f:targetPort': {}
+          'f:selector': {}
+          'f:sessionAffinity': {}
+          'f:type': {}
+spec:
+  clusterIP: 172.30.51.19
+  ipFamilies:
+    - IPv4
+  ports:
+    - name: 3000-tcp
+      protocol: TCP
+      port: 3000
+      targetPort: 3000
+  internalTrafficPolicy: Cluster
+  clusterIPs:
+    - 172.30.51.19
+  type: ClusterIP
+  ipFamilyPolicy: SingleStack
+  sessionAffinity: None
+  selector:
+    app: flowise
+    deployment: flowise
+status:
+  loadBalancer: {}
