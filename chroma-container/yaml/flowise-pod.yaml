@@ -1,0 +1,259 @@
+kind: Pod
+apiVersion: v1
+metadata:
+  generateName: flowise-db58cb758-
+  annotations:
+    k8s.ovn.org/pod-networks: >-
+      {"default":{"ip_addresses":["10.131.0.93/23"],"mac_address":"0a:58:0a:83:00:5d","gateway_ips":["10.131.0.1"],"ip_address":"10.131.0.93/23","gateway_ip":"10.131.0.1"}}
+    k8s.v1.cni.cncf.io/network-status: |-
+      [{
+          "name": "ovn-kubernetes",
+          "interface": "eth0",
+          "ips": [
+              "10.131.0.93"
+          ],
+          "mac": "0a:58:0a:83:00:5d",
+          "default": true,
+          "dns": {}
+      }]
+    k8s.v1.cni.cncf.io/networks-status: |-
+      [{
+          "name": "ovn-kubernetes",
+          "interface": "eth0",
+          "ips": [
+              "10.131.0.93"
+          ],
+          "mac": "0a:58:0a:83:00:5d",
+          "default": true,
+          "dns": {}
+      }]
+    openshift.io/generated-by: OpenShiftWebConsole
+    openshift.io/scc: anyuid
+  resourceVersion: '453310'
+  name: flowise-db58cb758-xsqlf
+  uid: 67d77417-8f39-47f2-9ec2-7062413b18ca
+  creationTimestamp: '2024-03-11T09:22:00Z'
+  managedFields:
+    - manager: aro-cluster-hx76w-gg7rl-master-1
+      operation: Update
+      apiVersion: v1
+      time: '2024-03-11T09:22:00Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:metadata':
+          'f:annotations':
+            'f:k8s.ovn.org/pod-networks': {}
+    - manager: kube-controller-manager
+      operation: Update
+      apiVersion: v1
+      time: '2024-03-11T09:22:00Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:metadata':
+          'f:annotations':
+            .: {}
+            'f:openshift.io/generated-by': {}
+          'f:generateName': {}
+          'f:labels':
+            .: {}
+            'f:app': {}
+            'f:deployment': {}
+            'f:pod-template-hash': {}
+          'f:ownerReferences':
+            .: {}
+            'k:{"uid":"31ede19c-75e0-4b22-b625-4210b4b6bd81"}': {}
+        'f:spec':
+          'f:containers':
+            'k:{"name":"flowise"}':
+              'f:image': {}
+              'f:terminationMessagePolicy': {}
+              .: {}
+              'f:resources': {}
+              'f:args': {}
+              'f:command': {}
+              'f:terminationMessagePath': {}
+              'f:imagePullPolicy': {}
+              'f:ports':
+                .: {}
+                'k:{"containerPort":8080,"protocol":"TCP"}':
+                  .: {}
+                  'f:containerPort': {}
+                  'f:protocol': {}
+              'f:name': {}
+          'f:dnsPolicy': {}
+          'f:enableServiceLinks': {}
+          'f:restartPolicy': {}
+          'f:schedulerName': {}
+          'f:securityContext': {}
+          'f:terminationGracePeriodSeconds': {}
+    - manager: kubelet
+      operation: Update
+      apiVersion: v1
+      time: '2024-03-11T09:22:01Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:status':
+          'f:conditions':
+            'k:{"type":"ContainersReady"}':
+              .: {}
+              'f:lastProbeTime': {}
+              'f:lastTransitionTime': {}
+              'f:status': {}
+              'f:type': {}
+            'k:{"type":"Initialized"}':
+              .: {}
+              'f:lastProbeTime': {}
+              'f:lastTransitionTime': {}
+              'f:status': {}
+              'f:type': {}
+            'k:{"type":"Ready"}':
+              .: {}
+              'f:lastProbeTime': {}
+              'f:lastTransitionTime': {}
+              'f:status': {}
+              'f:type': {}
+          'f:containerStatuses': {}
+          'f:hostIP': {}
+          'f:phase': {}
+          'f:podIP': {}
+          'f:podIPs':
+            .: {}
+            'k:{"ip":"10.131.0.93"}':
+              .: {}
+              'f:ip': {}
+          'f:startTime': {}
+      subresource: status
+    - manager: multus
+      operation: Update
+      apiVersion: v1
+      time: '2024-03-11T09:22:01Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:metadata':
+          'f:annotations':
+            'f:k8s.v1.cni.cncf.io/network-status': {}
+            'f:k8s.v1.cni.cncf.io/networks-status': {}
+      subresource: status
+  namespace: flowise
+  ownerReferences:
+    - apiVersion: apps/v1
+      kind: ReplicaSet
+      name: flowise-db58cb758
+      uid: 31ede19c-75e0-4b22-b625-4210b4b6bd81
+      controller: true
+      blockOwnerDeletion: true
+  labels:
+    app: flowise
+    deployment: flowise
+    pod-template-hash: db58cb758
+spec:
+  restartPolicy: Always
+  serviceAccountName: default
+  imagePullSecrets:
+    - name: default-dockercfg-4bhrr
+  priority: 0
+  schedulerName: default-scheduler
+  enableServiceLinks: true
+  terminationGracePeriodSeconds: 30
+  preemptionPolicy: PreemptLowerPriority
+  nodeName: aro-cluster-hx76w-gg7rl-worker-eastus3-4tddw
+  securityContext:
+    seLinuxOptions:
+      level: 's0:c26,c25'
+  containers:
+    - resources: {}
+      terminationMessagePath: /dev/termination-log
+      name: flowise
+      command:
+        - flowise
+      securityContext:
+        capabilities:
+          drop:
+            - MKNOD
+      ports:
+        - containerPort: 8080
+          protocol: TCP
+      imagePullPolicy: IfNotPresent
+      volumeMounts:
+        - name: kube-api-access-925f5
+          readOnly: true
+          mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+      terminationMessagePolicy: File
+      image: >-
+        image-registry.openshift-image-registry.svc:5000/flowise/flowise@sha256:76e13e138e194967611794a64f8f645c793aa72824899e1cddf5aaabcd23cdf3
+      args:
+        - start
+  serviceAccount: default
+  volumes:
+    - name: kube-api-access-925f5
+      projected:
+        sources:
+          - serviceAccountToken:
+              expirationSeconds: 3607
+              path: token
+          - configMap:
+              name: kube-root-ca.crt
+              items:
+                - key: ca.crt
+                  path: ca.crt
+          - downwardAPI:
+              items:
+                - path: namespace
+                  fieldRef:
+                    apiVersion: v1
+                    fieldPath: metadata.namespace
+          - configMap:
+              name: openshift-service-ca.crt
+              items:
+                - key: service-ca.crt
+                  path: service-ca.crt
+        defaultMode: 420
+  dnsPolicy: ClusterFirst
+  tolerations:
+    - key: node.kubernetes.io/not-ready
+      operator: Exists
+      effect: NoExecute
+      tolerationSeconds: 300
+    - key: node.kubernetes.io/unreachable
+      operator: Exists
+      effect: NoExecute
+      tolerationSeconds: 300
+status:
+  phase: Running
+  conditions:
+    - type: Initialized
+      status: 'True'
+      lastProbeTime: null
+      lastTransitionTime: '2024-03-11T09:22:00Z'
+    - type: Ready
+      status: 'True'
+      lastProbeTime: null
+      lastTransitionTime: '2024-03-11T09:22:01Z'
+    - type: ContainersReady
+      status: 'True'
+      lastProbeTime: null
+      lastTransitionTime: '2024-03-11T09:22:01Z'
+    - type: PodScheduled
+      status: 'True'
+      lastProbeTime: null
+      lastTransitionTime: '2024-03-11T09:22:00Z'
+  hostIP: 10.0.2.5
+  podIP: 10.131.0.93
+  podIPs:
+    - ip: 10.131.0.93
+  startTime: '2024-03-11T09:22:00Z'
+  containerStatuses:
+    - restartCount: 0
+      started: true
+      ready: true
+      name: flowise
+      state:
+        running:
+          startedAt: '2024-03-11T09:22:01Z'
+      imageID: >-
+        image-registry.openshift-image-registry.svc:5000/flowise/flowise@sha256:76e13e138e194967611794a64f8f645c793aa72824899e1cddf5aaabcd23cdf3
+      image: >-
+        image-registry.openshift-image-registry.svc:5000/flowise/flowise@sha256:76e13e138e194967611794a64f8f645c793aa72824899e1cddf5aaabcd23cdf3
+      lastState: {}
+      containerID: 'cri-o://6a49f11e6c5f606bd97d8d1e0421f40713a12a62fb6701031fa85cb3a95a2923'
+  qosClass: BestEffort
